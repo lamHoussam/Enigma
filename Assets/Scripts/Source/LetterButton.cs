@@ -3,6 +3,8 @@ using UnityEngine;
 public class LetterButton : MonoBehaviour
 {
     [SerializeField] private int m_letterIndex;
+    public int LetterIndex => m_letterIndex;
+
     private Enigma m_Enigma;
 
     public void Awake()
@@ -12,6 +14,6 @@ public class LetterButton : MonoBehaviour
 
     public void OnClick()
     {
-        Debug.Log(m_letterIndex);
+        //Debug.Log(m_letterIndex);
     }
 }
