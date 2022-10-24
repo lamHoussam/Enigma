@@ -13,14 +13,29 @@ public class Enigma : MonoBehaviour
     [SerializeField] private Rotor m_HeadRotor;
     public Rotor HeadRotor => m_HeadRotor;
 
+    [SerializeField] private RotorWiring[] m_RotorWirings;
+
     public void Awake()
     {
         m_lightBulbs = GetComponentsInChildren<LightBulb>();
         m_letterButtons = GetComponentsInChildren<LetterButton>();
 
+        //PrintWiring();
 
         m_offMat = m_lightBulbs[0].GetComponent<MeshRenderer>().material;
+
+        foreach (RotorWiring wiring in m_RotorWirings)
+            if (!wiring || !wiring.CheckWiring())
+                Debug.LogError("Check wiring : " + wiring);
     }
+
+    // To Generate random wiring
+
+    //private void Start()
+    //{
+    //    for(int i = 0; i < m_RotorWirings.Length; i++)
+    //        m_RotorWirings[i].MakeEndValues();
+    //}
 
     public void Update()
     {
@@ -34,10 +49,11 @@ public class Enigma : MonoBehaviour
                 {
                     button.OnClick();
 
-                    int encoded = m_HeadRotor.EncodeLetter(button.LetterIndex);
+                    //int encoded = m_HeadRotor.EncodeLetter(button.LetterIndex);
+                    int encoded = Encode(button.LetterIndex);
                     m_HeadRotor.Increment();
 
-                    if(m_previousLitBulb != null)
+                    if (m_previousLitBulb != null)
                         m_previousLitBulb.GetComponent<MeshRenderer>().material = m_offMat;
                     
                     m_lightBulbs[encoded].GetComponent<MeshRenderer>().material = m_onMat;
@@ -45,5 +61,19 @@ public class Enigma : MonoBehaviour
                 }
             }
         }
+    }
+
+    private int Encode(int l)
+    {
+        int val = l;
+        Debug.LogWarning(m_letterButtons[val].KeyCharacter);
+
+        for(int i = 0; i < m_RotorWirings.Length; i++)
+            val = m_RotorWirings[i].GetValue(val);
+
+        for (int i = m_RotorWirings.Length - 2; i >=0; i--)
+            val = m_RotorWirings[i].GetValue(val);
+
+        return val;
     }
 }

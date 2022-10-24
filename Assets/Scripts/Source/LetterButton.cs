@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class LetterButton : MonoBehaviour
@@ -6,6 +7,8 @@ public class LetterButton : MonoBehaviour
     public int LetterIndex => m_letterIndex;
 
     private Enigma m_Enigma;
+
+    public string KeyCharacter => GetComponentInChildren<TextMeshPro>().text;
 
     public void Awake()
     {

@@ -1633,9 +1633,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c1ca86a4c55a54d8024ee5b47635f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_currentValue: 21
-  m_initCipherRotation: 0
+  m_currentValue: 12
   m_Next: {fileID: 1560913602}
+  m_Previous: {fileID: 353568416}
 --- !u!65 &187244707
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4071,9 +4071,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c1ca86a4c55a54d8024ee5b47635f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_currentValue: 6
-  m_initCipherRotation: 0
+  m_currentValue: 7
   m_Next: {fileID: 187244706}
+  m_Previous: {fileID: 1560913602}
 --- !u!65 &353568417
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6953,6 +6953,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_onMat: {fileID: 2100000, guid: cf35e6d694991e14db3714ed811c8ffc, type: 2}
   m_HeadRotor: {fileID: 1560913602}
+  m_RotorWirings:
+  - {fileID: 11400000, guid: 8a60705c60616d043a438bb418c2b964, type: 2}
+  - {fileID: 11400000, guid: 4fb0e62aff2d4414790da75904859d17, type: 2}
+  - {fileID: 11400000, guid: 4ddbe5c3e3604d544b16662033875e6a, type: 2}
+  - {fileID: 11400000, guid: e9175c5886c161f498fdaafe6131b404, type: 2}
 --- !u!1 &865481756
 GameObject:
   m_ObjectHideFlags: 0
@@ -11812,9 +11817,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c1ca86a4c55a54d8024ee5b47635f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_currentValue: 5
-  m_initCipherRotation: 3
+  m_currentValue: 3
   m_Next: {fileID: 353568416}
+  m_Previous: {fileID: 0}
 --- !u!1 &1561665459
 GameObject:
   m_ObjectHideFlags: 0
