@@ -10,6 +10,9 @@ public class Enigma : MonoBehaviour
 
     private LightBulb m_previousLitBulb = null;
 
+    [SerializeField] private Rotor m_HeadRotor;
+    public Rotor HeadRotor => m_HeadRotor;
+
     public void Awake()
     {
         m_lightBulbs = GetComponentsInChildren<LightBulb>();
@@ -31,11 +34,14 @@ public class Enigma : MonoBehaviour
                 {
                     button.OnClick();
 
+                    int encoded = m_HeadRotor.EncodeLetter(button.LetterIndex);
+                    m_HeadRotor.Increment();
+
                     if(m_previousLitBulb != null)
                         m_previousLitBulb.GetComponent<MeshRenderer>().material = m_offMat;
                     
-                    m_lightBulbs[button.LetterIndex].GetComponent<MeshRenderer>().material = m_onMat;
-                    m_previousLitBulb = m_lightBulbs[button.LetterIndex];
+                    m_lightBulbs[encoded].GetComponent<MeshRenderer>().material = m_onMat;
+                    m_previousLitBulb = m_lightBulbs[encoded];
                 }
             }
         }
