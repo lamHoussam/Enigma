@@ -20,22 +20,14 @@ public class Enigma : MonoBehaviour
         m_lightBulbs = GetComponentsInChildren<LightBulb>();
         m_letterButtons = GetComponentsInChildren<LetterButton>();
 
-        //PrintWiring();
-
         m_offMat = m_lightBulbs[0].GetComponent<MeshRenderer>().material;
-
-        foreach (RotorWiring wiring in m_RotorWirings)
-            if (!wiring || !wiring.CheckWiring())
-                Debug.LogError("Check wiring : " + wiring);
     }
 
-    // To Generate random wiring
-
-    //private void Start()
-    //{
-    //    for(int i = 0; i < m_RotorWirings.Length; i++)
-    //        m_RotorWirings[i].MakeEndValues();
-    //}
+    private void Start()
+    {
+        HeadRotor.Increment();
+        HeadRotor.Next.Increment();
+    }
 
     public void Update()
     {
@@ -49,31 +41,20 @@ public class Enigma : MonoBehaviour
                 {
                     button.OnClick();
 
-                    //int encoded = m_HeadRotor.EncodeLetter(button.LetterIndex);
-                    int encoded = Encode(button.LetterIndex);
-                    m_HeadRotor.Increment();
+                    int encoded = m_HeadRotor.Encode(button.LetterIndex);
+                    //GetRotorValues();
+                    //int encoded = Encode(button.LetterIndex);
+                    //m_HeadRotor.Increment();
 
                     if (m_previousLitBulb != null)
                         m_previousLitBulb.GetComponent<MeshRenderer>().material = m_offMat;
-                    
+
                     m_lightBulbs[encoded].GetComponent<MeshRenderer>().material = m_onMat;
                     m_previousLitBulb = m_lightBulbs[encoded];
+
                 }
             }
         }
     }
 
-    private int Encode(int l)
-    {
-        int val = l;
-        Debug.LogWarning(m_letterButtons[val].KeyCharacter);
-
-        for(int i = 0; i < m_RotorWirings.Length; i++)
-            val = m_RotorWirings[i].GetValue(val);
-
-        for (int i = m_RotorWirings.Length - 2; i >=0; i--)
-            val = m_RotorWirings[i].GetValue(val);
-
-        return val;
-    }
 }
