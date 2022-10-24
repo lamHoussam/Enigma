@@ -34,6 +34,9 @@ public class Rotor : MonoBehaviour
     private void Start()
     {
         m_Text.text = m_currentValue.ToString();
+
+        for(int i = 0; i < m_currentValue; i++)
+            IncrementPri();
     }
 
     public int MapStartIndexToEnd(int i) { return m_startIndicesValues[i]; }
@@ -47,6 +50,19 @@ public class Rotor : MonoBehaviour
         return -1;
     }
 
+    private void IncrementPri() {
+        int last = m_startIndicesValues[m_startIndicesValues.Count - 1];
+        for (int i = m_startIndicesValues.Count - 1; i > 0; i--)
+        {
+            m_startIndicesValues[i] = m_startIndicesValues[i - 1];
+        }
+
+        m_startIndicesValues[0] = last;
+
+        //if (m_startIndicesValues[m_startIndicesValues.Count - 1] == m_Wiring.First)
+        //    m_Next.IncrementPri();
+    }
+
     public void Increment()
     {
         int last = m_startIndicesValues[m_startIndicesValues.Count - 1];
@@ -57,6 +73,14 @@ public class Rotor : MonoBehaviour
 
         m_startIndicesValues[0] = last;
 
+        m_currentValue++;
+        if (m_currentValue >= 26)
+        {
+            m_currentValue = 0;
+            if (m_Next)
+                m_Next.Increment();
+        }
+        m_Text.text = m_currentValue.ToString();
     }
 
 

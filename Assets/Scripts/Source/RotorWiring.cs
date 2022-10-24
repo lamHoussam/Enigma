@@ -10,6 +10,8 @@ public class RotorWiring : ScriptableObject
     [SerializeField] private List<int> m_startIndicesValues;
     public List<int> StartIndices => m_startIndicesValues;
 
+    public int First => m_startIndicesValues[0];
+
     //private List<int> m_initialStartIndices;
 
 

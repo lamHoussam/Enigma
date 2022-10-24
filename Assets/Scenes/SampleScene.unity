@@ -1635,7 +1635,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Next: {fileID: 1560913602}
   m_Previous: {fileID: 353568416}
-  m_currentValue: 0
+  m_currentValue: 25
   m_Wiring: {fileID: 11400000, guid: 7615c343481bd0b4ca2d62e8a581d53a, type: 2}
   m_Reflector: {fileID: 11400000, guid: 0c140adc7c36c334680b08b4fc565668, type: 2}
 --- !u!65 &187244707
@@ -4075,7 +4075,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Next: {fileID: 187244706}
   m_Previous: {fileID: 1560913602}
-  m_currentValue: 0
+  m_currentValue: 25
   m_Wiring: {fileID: 11400000, guid: e33bd167ef1864f43a417a60a836e390, type: 2}
   m_Reflector: {fileID: 0}
 --- !u!65 &353568417
@@ -6962,7 +6962,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4fb0e62aff2d4414790da75904859d17, type: 2}
   - {fileID: 11400000, guid: 4ddbe5c3e3604d544b16662033875e6a, type: 2}
   - {fileID: 11400000, guid: e9175c5886c161f498fdaafe6131b404, type: 2}
-  m_rotorValues: 
 --- !u!1 &865481756
 GameObject:
   m_ObjectHideFlags: 0
@@ -11824,7 +11823,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Next: {fileID: 353568416}
   m_Previous: {fileID: 0}
-  m_currentValue: 0
+  m_currentValue: 24
   m_Wiring: {fileID: 11400000, guid: 6ca87c403800e8a4d95cf4118defba41, type: 2}
   m_Reflector: {fileID: 0}
 --- !u!1 &1561665459

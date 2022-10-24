@@ -23,11 +23,11 @@ public class Enigma : MonoBehaviour
         m_offMat = m_lightBulbs[0].GetComponent<MeshRenderer>().material;
     }
 
-    private void Start()
-    {
-        HeadRotor.Increment();
-        HeadRotor.Next.Increment();
-    }
+    //private void Start()
+    //{
+    //    HeadRotor.Increment();
+    //    HeadRotor.Next.Increment();
+    //}
 
     public void Update()
     {
@@ -42,9 +42,8 @@ public class Enigma : MonoBehaviour
                     button.OnClick();
 
                     int encoded = m_HeadRotor.Encode(button.LetterIndex);
-                    //GetRotorValues();
-                    //int encoded = Encode(button.LetterIndex);
-                    //m_HeadRotor.Increment();
+
+                    m_HeadRotor.Increment();
 
                     if (m_previousLitBulb != null)
                         m_previousLitBulb.GetComponent<MeshRenderer>().material = m_offMat;
