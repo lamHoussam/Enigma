@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class Enigma : MonoBehaviour
@@ -15,12 +16,15 @@ public class Enigma : MonoBehaviour
 
     [SerializeField] private Plugboard m_Plugboard;
 
+    [SerializeField] private TextMeshProUGUI m_encodedText;
+
     public void Awake()
     {
         m_lightBulbs = GetComponentsInChildren<LightBulb>();
         m_letterButtons = GetComponentsInChildren<LetterButton>();
 
         m_offMat = m_lightBulbs[0].GetComponent<MeshRenderer>().material;
+        ResetText();
     }
 
     //private void Start()
@@ -28,6 +32,11 @@ public class Enigma : MonoBehaviour
     //    HeadRotor.Increment();
     //    HeadRotor.Next.Increment();
     //}
+
+    public void ResetText()
+    {
+        m_encodedText.text = "Text : ";
+    }
 
     public void Update()
     {
@@ -55,6 +64,7 @@ public class Enigma : MonoBehaviour
                     m_lightBulbs[encoded].GetComponent<MeshRenderer>().material = m_onMat;
                     m_previousLitBulb = m_lightBulbs[encoded];
 
+                    m_encodedText.text += m_previousLitBulb.KeyCharacter;
                 }
             }
         }
