@@ -7,7 +7,7 @@ public class Enigma : MonoBehaviour
     private Material m_offMat;
 
     private LightBulb[] m_lightBulbs;
-    private LetterButton[] m_letterButtons;
+    //private LetterButton[] m_letterButtons;
 
     private LightBulb m_previousLitBulb = null;
 
@@ -21,17 +21,11 @@ public class Enigma : MonoBehaviour
     public void Awake()
     {
         m_lightBulbs = GetComponentsInChildren<LightBulb>();
-        m_letterButtons = GetComponentsInChildren<LetterButton>();
+        //m_letterButtons = GetComponentsInChildren<LetterButton>();
 
         m_offMat = m_lightBulbs[0].GetComponent<MeshRenderer>().material;
         ResetText();
     }
-
-    //private void Start()
-    //{
-    //    HeadRotor.Increment();
-    //    HeadRotor.Next.Increment();
-    //}
 
     public void ResetText()
     {
@@ -49,8 +43,6 @@ public class Enigma : MonoBehaviour
             {
                 if(hit.transform.TryGetComponent(out LetterButton button))
                 {
-                    button.OnClick();
-
                     int encoded = m_Plugboard.GetEquivalent(button.LetterIndex);
                     encoded = m_HeadRotor.Encode(encoded);
 

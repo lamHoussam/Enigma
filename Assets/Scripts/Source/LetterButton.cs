@@ -1,22 +1,13 @@
 using TMPro;
 using UnityEngine;
 
+
+// TODO : inherit from class with same members
 public class LetterButton : MonoBehaviour
 {
     [SerializeField] private int m_letterIndex;
     public int LetterIndex => m_letterIndex;
 
-    private Enigma m_Enigma;
-
     public string KeyCharacter => GetComponentInChildren<TextMeshPro>().text;
 
-    public void Awake()
-    {
-        m_Enigma = GetComponentInParent<Enigma>();
-    }
-
-    public void OnClick()
-    {
-        //Debug.Log(m_letterIndex);
-    }
 }

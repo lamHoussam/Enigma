@@ -58,9 +58,6 @@ public class Rotor : MonoBehaviour
         }
 
         m_startIndicesValues[0] = last;
-
-        //if (m_startIndicesValues[m_startIndicesValues.Count - 1] == m_Wiring.First)
-        //    m_Next.IncrementPri();
     }
 
     public void Increment()

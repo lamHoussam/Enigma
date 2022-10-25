@@ -12,7 +12,4 @@ public class RotorWiring : ScriptableObject
 
     public int First => m_startIndicesValues[0];
 
-    //private List<int> m_initialStartIndices;
-
-
 }
