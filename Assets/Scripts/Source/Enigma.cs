@@ -13,7 +13,7 @@ public class Enigma : MonoBehaviour
     [SerializeField] private Rotor m_HeadRotor;
     public Rotor HeadRotor => m_HeadRotor;
 
-    [SerializeField] private RotorWiring[] m_RotorWirings;
+    [SerializeField] private Plugboard m_Plugboard;
 
     public void Awake()
     {
@@ -31,6 +31,7 @@ public class Enigma : MonoBehaviour
 
     public void Update()
     {
+
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -41,12 +42,15 @@ public class Enigma : MonoBehaviour
                 {
                     button.OnClick();
 
-                    int encoded = m_HeadRotor.Encode(button.LetterIndex);
+                    int encoded = m_Plugboard.GetEquivalent(button.LetterIndex);
+                    encoded = m_HeadRotor.Encode(encoded);
 
                     m_HeadRotor.Increment();
 
                     if (m_previousLitBulb != null)
                         m_previousLitBulb.GetComponent<MeshRenderer>().material = m_offMat;
+
+                    encoded = m_Plugboard.GetEquivalent(encoded);
 
                     m_lightBulbs[encoded].GetComponent<MeshRenderer>().material = m_onMat;
                     m_previousLitBulb = m_lightBulbs[encoded];
